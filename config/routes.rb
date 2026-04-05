@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get "courses/index"
-    get "courses/new"
-    get "courses/edit"
-    get "courses/show"
-    get "courses/create"
-    get "courses/update"
-    get "courses/destroy"
+    resources :courses
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
