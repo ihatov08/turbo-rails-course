@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :courses do
       resources :sections, only: %i[new create edit update destroy] do
-        resources :lectures, only: %i[new create edit update destroy]
+        resources :lectures, only: %i[new create edit update destroy], shallow: true
       end
     end
   end

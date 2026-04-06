@@ -1,0 +1,18 @@
+<div class="mt-4 ml-4">
+  <div class="p-4 border border-gray-200 rounded-lg bg-white">
+    <%= form_with(model: [section, lecture], url: admin_course_section_lectures_path(section.course, section), class: "flex items-center gap-3") do |form| %>
+      <% if lecture.errors.any? %>
+        <div class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md">
+          <ul class="list-disc ml-5">
+            <% lecture.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <%= form.text_field :name, placeholder: "タイトルを入力してください", autofocus: true, class: "block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 text-sm" %>
+    <%= form.submit "追加", class: "rounded-md px-3.5 py-2 bg-purple-600 hover:bg-purple-500 text-white text-sm font-medium cursor-pointer" %>
+    <%= link_to "キャンセル", admin_course_path(section.course), data: { turbo_frame: dom_id(section, :new_lecture) }, class: "rounded-md px-3.5 py-2 text-sm font-medium text-gray-700 hover:text-gray-500" %>
+    <% end %>
+  </div>
+</div>
