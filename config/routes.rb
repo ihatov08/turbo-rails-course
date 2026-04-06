@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :courses
+    resources :courses do
+      resources :sections, only: %i[new create edit update destroy]
+    end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
