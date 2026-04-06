@@ -5,6 +5,10 @@
 
   <h1 class="font-bold text-4xl mb-4"><%= @course.name %></h1>
 
+  <% @course.sections.each do |section| %>
+    <%= render partial: "admin/sections/section", locals: { section: section } %>
+  <% end %>
+
   <%= turbo_frame_tag Section.new do %>
     <%= link_to new_admin_course_section_path(@course), class: "mt-6 inline-flex items-center gap-1 rounded-full border-2 border-purple-600 text-purple-600 px-4 py-2 font-medium hover:bg-purple-50" do %>
       <span class="text-lg">+</span> セクション
