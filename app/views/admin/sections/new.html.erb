@@ -1,4 +1,7 @@
-<div>
-  <h1 class="font-bold text-4xl">Admin::Sections#new</h1>
-  <p>Find me in app/views/admin/sections/new.html.erb</p>
-</div>
+<%= turbo_frame_tag Section.new do %>
+  <div class="mt-6">
+    <div class="p-6 border border-gray-200 rounded-lg">
+      <%= render "form", section: @section, course: @course %>
+    </div>
+  </div>
+<% end %>

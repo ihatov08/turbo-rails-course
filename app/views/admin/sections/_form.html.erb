@@ -1,0 +1,21 @@
+<%= form_with(model: [:admin, course, section], class: "space-y-4") do |form| %>
+  <% if section.errors.any? %>
+    <div class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md">
+      <ul class="list-disc ml-5">
+        <% section.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flex items-center gap-4">
+    <label class="font-bold text-lg whitespace-nowrap">新しいセクション：</label>
+    <%= form.text_field :name, placeholder: "タイトルを入力してください", class: "block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500" %>
+  </div>
+
+  <div class="flex items-center justify-end gap-2">
+    <%= link_to "キャンセル", admin_course_path(course), data: { turbo_frame: "new_section", cancel_section: true }, class: "rounded-md px-3.5 py-2.5 font-medium text-gray-700 hover:text-gray-500" %>
+    <%= form.submit "セクションを追加", class: "rounded-md px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white font-medium cursor-pointer" %>
+  </div>
+<% end %>
