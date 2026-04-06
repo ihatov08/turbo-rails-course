@@ -9,5 +9,11 @@
         <%= button_to "削除", admin_course_section_path(section.course, section), method: :delete, class: "rounded-md px-3 py-1.5 text-white bg-red-600 hover:bg-red-500 text-sm font-medium cursor-pointer", data: { turbo_confirm: "本当に削除しますか？" } %>
       </div>
     </div>
+
+    <%= turbo_frame_tag dom_id(section, :new_lecture) do %>
+      <%= link_to new_admin_course_section_lecture_path(section.course, section), class: "mt-4 ml-4 inline-flex items-center gap-1 rounded-full border-2 border-purple-600 text-purple-600 px-4 py-2 text-sm font-medium hover:bg-purple-50" do %>
+        <span>+</span> カリキュラム項目
+      <% end %>
+    <% end %>
   </div>
 <% end %>
