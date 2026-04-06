@@ -1,1 +1,2 @@
 <%= turbo_stream.append dom_id(@section, :lectures), partial: "admin/lectures/lecture", locals: { lecture: @lecture } %>
+<%= turbo_stream.update dom_id(@section, :new_lecture), partial: "admin/lectures/new_link", locals: { section: @section } %>

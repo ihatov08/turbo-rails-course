@@ -14,10 +14,6 @@
       <%= render section.lectures %>
     <% end %>
 
-    <%= turbo_frame_tag dom_id(section, :new_lecture) do %>
-      <%= link_to new_admin_course_section_lecture_path(section.course, section), class: "mt-4 ml-4 inline-flex items-center gap-1 rounded-full border-2 border-purple-600 text-purple-600 px-4 py-2 text-sm font-medium hover:bg-purple-50" do %>
-        <span>+</span> カリキュラム項目
-      <% end %>
-    <% end %>
+    <%= render partial: "admin/lectures/new_link", locals: { section: section } %>
   </div>
 <% end %>
