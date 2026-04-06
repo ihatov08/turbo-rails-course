@@ -1,4 +1,6 @@
-<div>
-  <h1 class="font-bold text-4xl">Admin::Courses#new</h1>
-  <p>Find me in app/views/admin/courses/new.html.erb</p>
-</div>
+<%= turbo_frame_tag Course.new do %>
+  <div class="mt-4 p-6 border border-gray-200 rounded-lg">
+    <h2 class="font-bold text-2xl mb-4">新しいコース</h2>
+    <%= render "form", course: @course %>
+  </div>
+<% end %>
