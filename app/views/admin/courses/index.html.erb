@@ -18,4 +18,8 @@
       </div>
     <% end %>
   <% end %>
+
+  <% @courses.each do |course| %>
+    <%= render partial: "admin/courses/course", locals: { course: course } %>
+  <% end %>
 </div>
