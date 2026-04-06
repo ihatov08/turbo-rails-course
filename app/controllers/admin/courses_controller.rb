@@ -28,6 +28,13 @@ class Admin::CoursesController < ApplicationController
   end
 
   def update
+    @course = Course.find(params[:id])
+
+    if @course.update(course_params)
+      redirect_to admin_courses_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
