@@ -1,6 +1,6 @@
 class Admin::CoursesController < ApplicationController
   def index
-    @courses = Course.all
+    @courses = Course.order(id: :desc)
   end
 
   def new
@@ -15,8 +15,12 @@ class Admin::CoursesController < ApplicationController
 
   def create
     @course = Course.new(course_params)
+
     if @course.save
-      redirect_to admin_courses_path, notice: "コースが作成されました。"
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to admin_courses_path, notice: "コースを作成しました。" }
+      end
     else
       render :new, status: :unprocessable_entity
     end

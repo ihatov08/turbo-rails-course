@@ -19,7 +19,9 @@
     <% end %>
   <% end %>
 
-  <% @courses.each do |course| %>
-    <%= render partial: "admin/courses/course", locals: { course: course } %>
+  <%= turbo_frame_tag "courses" do %>
+    <% @courses.each do |course| %>
+      <%= render partial: "admin/courses/course", locals: { course: course } %>
+    <% end %>
   <% end %>
 </div>
