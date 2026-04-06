@@ -1,1 +1,4 @@
-<%= turbo_stream.update "new_section", "" %>
+<%= turbo_stream.append "sections", partial: "admin/sections/section", locals: { section: @section } %>
+<%= turbo_stream.update Section.new do %>
+  <%= render "admin/sections/new_link", course: @course %>
+<% end %>
