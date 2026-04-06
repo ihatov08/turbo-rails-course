@@ -35,6 +35,14 @@ class Admin::SectionsController < ApplicationController
   end
 
   def destroy
+    @course = Course.find(params[:course_id])
+    @section = @course.sections.find(params[:id])
+    @section.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to admin_course_path(@course), notice: "セクションを削除しました。" }
+    end
   end
 
   private
