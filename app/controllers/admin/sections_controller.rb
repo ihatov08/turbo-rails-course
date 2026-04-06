@@ -19,9 +19,19 @@ class Admin::SectionsController < ApplicationController
   end
 
   def edit
+    @course = Course.find(params[:course_id])
+    @section = @course.sections.find(params[:id])
   end
 
   def update
+    @course = Course.find(params[:course_id])
+    @section = @course.sections.find(params[:id])
+
+    if @section.update(section_params)
+      redirect_to admin_course_path(@course)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

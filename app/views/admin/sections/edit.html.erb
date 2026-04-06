@@ -1,4 +1,9 @@
-<div>
-  <h1 class="font-bold text-4xl">Admin::Sections#edit</h1>
-  <p>Find me in app/views/admin/sections/edit.html.erb</p>
-</div>
+<%= turbo_frame_tag @section do %>
+  <div class="p-6 border border-gray-200 rounded-lg bg-gray-50">
+    <%= form_with(model: [:admin, @course, @section], url: admin_course_section_path(@course, @section), class: "flex items-center gap-2") do |form| %>
+      <%= form.text_field :name, class: "rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 font-bold text-xl", autofocus: true %>
+      <%= form.submit "保存", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+      <%= link_to "キャンセル", admin_course_path(@course), class: "rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 font-medium" %>
+    <% end %>
+  </div>
+<% end %>
