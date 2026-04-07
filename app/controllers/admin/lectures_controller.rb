@@ -33,6 +33,13 @@ class Admin::LecturesController < ApplicationController
   end
 
   def destroy
+    @lecture = Lecture.find(params[:id])
+    @lecture.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to admin_course_path(@lecture.section.course), notice: "レクチャーを削除しました。" }
+    end
   end
 
   private
