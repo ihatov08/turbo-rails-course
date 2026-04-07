@@ -19,9 +19,17 @@ class Admin::LecturesController < ApplicationController
   end
 
   def edit
+    @lecture = Lecture.find(params[:id])
   end
 
   def update
+    @lecture = Lecture.find(params[:id])
+
+    if @lecture.update(lecture_params)
+      redirect_to admin_course_path(@lecture.section.course)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
